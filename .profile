@@ -31,3 +31,6 @@ case "$DESKTOP_SESSION" in
        	eval $(ssh-agent)
         ;;
 esac
+
+emacs --daemon &
+. "$HOME/.cargo/env"
