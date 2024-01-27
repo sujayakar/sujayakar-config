@@ -125,6 +125,7 @@
 (straight-use-package 'recentf)
 (recentf-mode t)
 (setq recentf-auto-cleanup 'never)
+(run-at-time nil (* 5 60) 'recentf-save-list)
 
 ;; ;; Use undo-tree for managing undo.
 (straight-use-package 'undo-tree)
@@ -170,10 +171,19 @@
 ;; LSP
 (straight-use-package 'eglot)
 
+;; ;; Copilot
+(use-package copilot
+  :straight (:host github :repo "copilot-emacs/copilot.el" :files ("dist" "*.el"))
+  :ensure t)
+(define-key copilot-completion-map (kbd "<tab>") 'copilot-accept-completion)
+(define-key copilot-completion-map (kbd "TAB") 'copilot-accept-completion)
+
 ;; ;; Rust
 (straight-use-package 'rust-mode)
 (add-hook 'rust-mode-hook 'eglot-ensure)
+(add-hook 'rust-mode-hook 'copilot-mode)
 
 ;; ;; TypeScript
 (straight-use-package 'typescript-mode)
 (add-hook 'typescript-mode-hook 'eglot-ensure)
+(add-hook 'typescript-mode-hook 'copilot-mode)
