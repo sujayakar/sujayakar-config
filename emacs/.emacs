@@ -51,6 +51,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(default ((t (:background nil))))
  '(line-number ((t (:inherit default :background "gray10" :foreground "gray90")))))
 
 ;; ;; Clean up unwanted UI elements.
@@ -187,3 +188,4 @@
 (straight-use-package 'typescript-mode)
 (add-hook 'typescript-mode-hook 'eglot-ensure)
 (add-hook 'typescript-mode-hook 'copilot-mode)
+(setq typescript-indent-level 2)
