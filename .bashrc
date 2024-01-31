@@ -129,3 +129,5 @@ export NVM_DIR="$HOME/.nvm"
 
 export PROMPT_DIRTRIM=2
 export PS1='\[\e[38;5;246m\]\w\[\e[0m\] \\$ '
+
+termtitle() { printf "\033]0;$*\007"; }
