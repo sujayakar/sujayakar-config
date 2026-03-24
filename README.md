@@ -9,6 +9,13 @@ Dotfiles for Fedora Asahi Linux on Apple Silicon (M4 MacBook Pro).
 - **waybar/** — Minimal status bar: workspaces, volume, wifi, battery, clock, idle inhibitor
 - **.bashrc** — Fedora defaults + cargo, nvm, emacsclient alias
 
+## Dev tools (installed separately)
+
+- **rust-analyzer** — Rust LSP (via `rustup component add`)
+- **ast-grep** (`sg`) — structural code search/rewrite by AST (`cargo install ast-grep`)
+- **grim** + **slurp** — Wayland screenshots
+- **Claude Code** — AI coding assistant, with emacs-mcp-server for editor introspection
+
 ## Install
 
 ### 1. System packages
@@ -17,12 +24,13 @@ Dotfiles for Fedora Asahi Linux on Apple Silicon (M4 MacBook Pro).
 sudo dnf install emacs sway waybar wofi swaylock foot brightnessctl grim slurp socat
 ```
 
-### 2. Rust toolchain
+### 2. Rust toolchain + dev tools
 
 ```bash
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 source ~/.cargo/env
 rustup component add rust-analyzer
+cargo install ast-grep --locked
 ```
 
 ### 3. Clone and symlink
@@ -66,7 +74,16 @@ systemctl --user enable --now emacs
 
 Open frames with `e` (alias for `emacsclient -c -a ""`).
 
-### 6. Start sway
+### 6. Screenshots
+
+```bash
+sudo dnf install grim slurp
+```
+
+Full screen: `grim /tmp/screenshot.png`
+Area selection: `grim -g "$(slurp)" /tmp/screenshot.png`
+
+### 7. Start sway
 
 Log out, select **Sway** at the SDDM login screen.
 
