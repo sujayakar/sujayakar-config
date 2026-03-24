@@ -1,0 +1,36 @@
+* {
+    font-family: monospace;
+    font-size: 14px;
+}
+
+window#waybar {
+    background-color: #282c34;
+    color: #abb2bf;
+}
+
+#workspaces button {
+    padding: 0 5px;
+    color: #abb2bf;
+    background: transparent;
+    border: none;
+}
+
+#workspaces button.focused {
+    color: #61afef;
+}
+
+#workspaces button.urgent {
+    color: #e06c75;
+}
+
+#clock, #battery, #network, #pulseaudio {
+    padding: 0 10px;
+}
+
+#battery.warning {
+    color: #e5c07b;
+}
+
+#battery.critical {
+    color: #e06c75;
+}
