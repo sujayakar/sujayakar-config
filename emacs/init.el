@@ -13,6 +13,7 @@
 (tool-bar-mode -1)
 (scroll-bar-mode -1)
 (setq inhibit-startup-screen t)
+(setq native-comp-async-report-warnings-errors 'silent)
 
 ;; Line numbers and parens
 (global-display-line-numbers-mode 1)
@@ -67,7 +68,15 @@
 ;; Justfile
 (use-package just-mode)
 
-;; Rust (tree-sitter mode + eglot)
+;; Language modes
+(use-package markdown-mode)
+(use-package yaml-mode)
+(use-package json-mode)
+(use-package toml-mode)
+(use-package dockerfile-mode)
+(use-package typescript-mode)
+
+;; Rust (eglot auto-starts rust-analyzer)
 (use-package rust-mode
   :hook (rust-mode . eglot-ensure))
 
@@ -111,7 +120,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(doom-themes ef-themes just-mode rust-mode undo-tree)))
+ '(package-selected-packages
+   '(dockerfile-mode doom-themes ef-themes json-mode just-mode
+                     markdown-mode rust-mode toml-mode typescript-mode
+                     undo-tree yaml-mode)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
